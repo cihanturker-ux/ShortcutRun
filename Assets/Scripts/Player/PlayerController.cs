@@ -9,8 +9,11 @@ public class PlayerController : MonoBehaviour
     float mouseStart;
     public float deadZone = 0.1f;
     public float horizontalSpeed;
+    public float jumpSpeed = 10f;
     Vector3 movementDelta;
     private Rigidbody rb;
+
+    private bool isGrounded = true;
 
     private void Start()
     {
@@ -48,10 +51,23 @@ public class PlayerController : MonoBehaviour
             movementDelta += Vector3.right * horizontalSpeed * delta;
         }
         Move();
+        if (tag == "zıplama rampası")
+        {
+            Jump();
+        }
     }
 
     void Move()
     {
         rb.MovePosition(rb.position + movementDelta * Time.deltaTime);
+    }
+
+    void Jump()
+    {
+        if (!isGrounded)
+        {
+            return;
+        }
+        rb.AddForce(Vector3.up * jumpSpeed, ForceMode.Impulse);
     }
 }
