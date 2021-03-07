@@ -5,12 +5,15 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     public float speed;
+    public float turnspeed;
     public int woodCount;
     float mouseStart;
     public float deadZone = 0.1f;
     public float horizontalSpeed;
     public float jumpSpeed = 10f;
     Vector3 movementDelta;
+    Vector3 turnRotation;
+    Vector3 movePoint = Vector3.zero;
     private Rigidbody rb;
 
     private bool isGrounded = true;
@@ -38,6 +41,8 @@ public class PlayerController : MonoBehaviour
         }
         else if (Input.GetMouseButton(0))
         {
+            turnRotation = new Vector3(movePoint.x, transform.position.y, transform.position.z);
+            transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(turnRotation - transform.position), turnspeed * Time.deltaTime);
             float delta = Input.mousePosition.x - mouseStart;
             mouseStart = Input.mousePosition.x;
             if (Mathf.Abs(delta) <= deadZone)
