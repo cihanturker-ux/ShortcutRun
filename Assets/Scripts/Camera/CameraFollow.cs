@@ -32,10 +32,12 @@ public class CameraFollow : MonoBehaviour
         if (offsetPositionSpace == Space.Self)
         {
             transform.position = target.TransformPoint(offsetPosition);
+            transform.rotation = target.transform.rotation;
         }
         else
         {
             transform.position = target.position + offsetPosition;
+            transform.rotation = target.rotation;
         }
 
         // compute rotation
