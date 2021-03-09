@@ -16,6 +16,7 @@ public class GameManager : MonoBehaviour
     public GameObject soundOffButton;
     public GameObject vibrateOnButton;
     public GameObject vibrateOffButton;
+    public GameObject playButton;
 
     private void Update()
     {
@@ -23,6 +24,7 @@ public class GameManager : MonoBehaviour
         {
             isStarted = true;
             isNotStarted = true;
+            playButton.SetActive(false);
         }
     }
 

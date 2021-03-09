@@ -18,6 +18,8 @@ public class AI : MonoBehaviour
 
     void Update()
     {
+        if (!GameManager.isStarted)
+            return;
         destination = Vector3.Distance(transform.position, Points[line].transform.position);
         if (destination < 1)
         {
