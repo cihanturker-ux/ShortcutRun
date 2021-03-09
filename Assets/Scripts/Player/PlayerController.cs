@@ -68,12 +68,6 @@ public class PlayerController : MonoBehaviour
             other.gameObject.SetActive(false);
 
         }
-        if (other.tag == "JumpZone")
-        {
-                Debug.Log("çarptı");
-                //rb.AddForce(Vector3.up * jumpSpeed, ForceMode.Impulse);
-            
-        }
     }
 
     private void OnTriggerExit(Collider other)
