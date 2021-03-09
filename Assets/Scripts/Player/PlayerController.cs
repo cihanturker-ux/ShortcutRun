@@ -27,7 +27,6 @@ public class PlayerController : MonoBehaviour
     {
         if (!GameManager.isStarted)
             return;
-
     }
 
     private void FixedUpdate()
@@ -42,7 +41,7 @@ public class PlayerController : MonoBehaviour
         else if (Input.GetMouseButton(0))
         {
             turnRotation = new Vector3(movePoint.x, transform.position.y, transform.position.z);
-            transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(turnRotation - transform.position), turnspeed * Time.deltaTime);
+            transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(turnRotation + transform.position), turnspeed * Time.fixedDeltaTime);
             float delta = Input.mousePosition.x - mouseStart;
             mouseStart = Input.mousePosition.x;
             if (Mathf.Abs(delta) <= deadZone)
@@ -57,9 +56,38 @@ public class PlayerController : MonoBehaviour
             movementDelta += Vector3.right * horizontalSpeed * delta;
         }
         Move();
-        if (tag == "zıplama rampası")
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "TakeWoods")
         {
-            Jump();
+            transform.GetChild(0).GetChild(woodCount).gameObject.SetActive(true);
+            woodCount++;
+            Debug.Log(woodCount);
+            other.gameObject.SetActive(false);
+
+        }
+        if (other.tag == "JumpZone")
+        {
+                Debug.Log("çarptı");
+                //rb.AddForce(Vector3.up * jumpSpeed, ForceMode.Impulse);
+            
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.tag == "DropWoods")
+        {
+            if (woodCount >= 0)
+            {
+                woodCount--;
+                Debug.Log(woodCount);
+                transform.GetChild(0).GetChild(woodCount).gameObject.SetActive(false);
+                other.gameObject.SetActive(true);
+
+            }
         }
     }
 
