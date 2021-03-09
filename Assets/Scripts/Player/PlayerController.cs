@@ -48,6 +48,7 @@ public class PlayerController : MonoBehaviour
             {
                 delta = Mathf.Sign(delta);
             }
+            Camera.main.transform.Rotate(0, 150 * delta, 0);
             movementDelta += Vector3.right * horizontalSpeed * delta;
         }
         Move();

@@ -19,7 +19,7 @@ public class AI : MonoBehaviour
     void Update()
     {
         destination = Vector3.Distance(transform.position, Points[line].transform.position);
-        if (destination < 5)
+        if (destination < 1)
         {
             line++;
         }

@@ -9,6 +9,7 @@ public class CameraFollow : MonoBehaviour
 
     [SerializeField]
     private Vector3 offsetPosition;
+    private float speed=5;
 
     [SerializeField]
     private Space offsetPositionSpace = Space.Self;
