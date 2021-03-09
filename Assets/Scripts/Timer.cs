@@ -5,7 +5,7 @@ using UnityEngine;
 public class Timer : MonoBehaviour
 {
     // Update is called once per frame
-    public float timeRemaining;
+    private float timeRemaining;
 
     void Update()
     {
