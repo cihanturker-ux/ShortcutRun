@@ -76,7 +76,6 @@ public class PlayerController : MonoBehaviour
         {
             if (woodCount >= 0)
             {
-                woodCount--;
                 Debug.Log(woodCount);
                 transform.GetChild(0).GetChild(woodCount).gameObject.SetActive(false);
                 other.gameObject.SetActive(true);

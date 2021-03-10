@@ -8,8 +8,6 @@ public class playerBehavior : MonoBehaviour
     public LayerMask mask;
     public GameObject board;
     public Timer timer;
-    List<GameObject> test;
-
     public GameObject gameOver;
     public GameObject retryButton;
     #endregion
@@ -30,16 +28,16 @@ public class playerBehavior : MonoBehaviour
     {
         if (!Physics.Raycast(transform.position, transform.TransformDirection(Vector3.down), out hit, Mathf.Infinity, mask))
         {
-            if (playerController.woodCount > 0)
+            if (playerController.woodCount > -1)
             {
-
-                board = Instantiate(board, new Vector3(transform.position.x, transform.position.y - 1.05f, transform.position.z), Quaternion.identity);
-                Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.down) * 10, Color.yellow);
-                transform.GetChild(0).GetChild(playerController.woodCount).gameObject.SetActive(false);
-                playerController.woodCount--;
-
-                
-                test.Add(board);
+                if(timer.getTime() < 0.2f)
+                {
+                    board = Instantiate(board, new Vector3(transform.position.x, transform.position.y - 1.05f, transform.position.z), Quaternion.identity);
+                    board.SetActive(true);
+                    transform.GetChild(0).GetChild(playerController.woodCount).gameObject.SetActive(false);
+                    playerController.woodCount--;
+                    timer.setTime(0.5f);
+                }
             }
             else
             {

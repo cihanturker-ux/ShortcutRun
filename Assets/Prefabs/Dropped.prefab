@@ -13,8 +13,8 @@ GameObject:
   - component: {fileID: 1880549386303103680}
   - component: {fileID: 1880549386303103681}
   m_Layer: 8
-  m_Name: Cube
-  m_TagString: TakeWoods
+  m_Name: Dropped
+  m_TagString: DropWoods
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -27,8 +27,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1880549386303103743}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.15, z: 3.72}
-  m_LocalScale: {x: 1, y: 0.2, z: 1}
+  m_LocalPosition: {x: 0.125, y: 0.15, z: 3.845}
+  m_LocalScale: {x: 1.2500026, y: 0.19999999, z: 1.25}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
