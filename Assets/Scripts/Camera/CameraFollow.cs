@@ -9,6 +9,7 @@ public class CameraFollow : MonoBehaviour
 
     [SerializeField]
     private Vector3 offsetPosition;
+    private float speed=5;
 
     [SerializeField]
     private Space offsetPositionSpace = Space.Self;
@@ -32,12 +33,10 @@ public class CameraFollow : MonoBehaviour
         if (offsetPositionSpace == Space.Self)
         {
             transform.position = target.TransformPoint(offsetPosition);
-            transform.rotation = target.transform.rotation;
         }
         else
         {
             transform.position = target.position + offsetPosition;
-            transform.rotation = target.rotation;
         }
 
         // compute rotation
@@ -51,4 +50,8 @@ public class CameraFollow : MonoBehaviour
         }
     }
 
+    void Rotate()
+    {
+        transform.RotateAround(target.transform.position, transform.up, Input.GetAxis("Mouse X") * speed);
+    }
 }

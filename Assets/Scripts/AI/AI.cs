@@ -21,7 +21,7 @@ public class AI : MonoBehaviour
         if (!GameManager.isStarted)
             return;
         destination = Vector3.Distance(transform.position, Points[line].transform.position);
-        if (destination < 5)
+        if (destination < 1)
         {
             line++;
         }

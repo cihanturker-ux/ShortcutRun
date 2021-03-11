@@ -38,6 +38,14 @@ public class GameManager : MonoBehaviour
     {
         settingsPanel.SetActive(!isSettingsActive);
         isSettingsActive = !isSettingsActive;
+        if (isSettingsActive)
+        {
+            Time.timeScale = 0;
+        }
+        else
+        {
+            Time.timeScale = 1;
+        }
     }
 
     public void SettingsPanelOff()
